@@ -1751,7 +1751,7 @@ class UsersTableSeeder extends Seeder
                 "guard_name" => "web",
                 "created_at" => date('Y-m-d H:i:s'),
                 "updated_at" => date('Y-m-d H:i:s'),
-            ],  
+            ],
         ];
 
         Permission::insert($arrPermissions);
@@ -2053,7 +2053,7 @@ class UsersTableSeeder extends Seeder
             ["name"=>"Delete Comment"],
             ["name"=>"Delete Attachment"],
 
-           
+
         ];
 
         $companyRole->givePermissionTo($companyPermissions);
@@ -2305,10 +2305,10 @@ class UsersTableSeeder extends Seeder
             ["name" => "Create Contract Type"],
             ["name" => "Edit Contract Type"],
             ["name" => "Delete Contract Type"],
-            
+
         ];
 
-        $hrRole->givePermissionTo($hrPermission);
+        $hrRole->givePermissionTo($companyPermissions);
 
 
         $hr = User::create(
@@ -2380,7 +2380,7 @@ class UsersTableSeeder extends Seeder
             ["name"=>"Delete Comment"],
             ["name"=>"Delete Attachment"],
 
-            
+
         ];
 
         $employeeRole->givePermissionTo($employeePermission);

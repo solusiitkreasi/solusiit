@@ -147,11 +147,11 @@ class HomeController extends Controller
         }
         else
         {
-            // if(!file_exists(storage_path() . "/installed"))
-            // {
-            //     header('location:install');
-            //     die;
-            // } else {
+            if(!file_exists(storage_path() . "/installed"))
+            {
+                header('location:install');
+                die;
+            } else {
                 $settings = Utility::settings();
                 if($settings['display_landing_page'] == 'on')
                 {
@@ -162,7 +162,8 @@ class HomeController extends Controller
                 {
                     return redirect('login');
                 }
-            // }
+
+            }
         }
     }
 

@@ -153,15 +153,15 @@ class HomeController extends Controller
             //     die;
             // } else {
                 $settings = Utility::settings();
-                if($settings['display_landing_page'] == 'on')
-                {
-                    $get_section = LandingPageSection::orderBy('section_order', 'ASC')->get();
-                    return view('layouts.landing',compact('get_section'));
-                }
-                else
-                {
+                // if($settings['display_landing_page'] == 'on')
+                // {
+                //     $get_section = LandingPageSection::orderBy('section_order', 'ASC')->get();
+                //     return view('layouts.landing',compact('get_section'));
+                // }
+                // else
+                // {
                     return redirect('login');
-                }
+                // }
 
             // }
         }

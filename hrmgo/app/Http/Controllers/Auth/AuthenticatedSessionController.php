@@ -33,11 +33,11 @@ class AuthenticatedSessionController extends Controller
 
     public function __construct()
     {
-        if(!file_exists(storage_path() . "/installed"))
-        {
-            header('location:install');
-            die;
-        }
+        // if(!file_exists(storage_path() . "/installed"))
+        // {
+        //     header('location:install');
+        //     die;
+        // }
     }
 
     /*protected function authenticated(Request $request, $user)
@@ -51,8 +51,8 @@ class AuthenticatedSessionController extends Controller
     }*/
 
     public function store(LoginRequest $request)
-    {  
-       
+    {
+
         if(env('RECAPTCHA_MODULE') == 'yes')
         {
             $validation['g-recaptcha-response'] = 'required|captcha';

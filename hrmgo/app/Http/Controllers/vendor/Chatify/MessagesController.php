@@ -84,7 +84,7 @@ class MessagesController extends Controller
 
         if(!empty($fetch->avatar))
         {
-            
+
             $avatar = \App\Models\Utility::get_file('uploads/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar);
         }
         else
@@ -553,7 +553,7 @@ class MessagesController extends Controller
         }
         )->orderBy('id', 'desc')->get();
 
-        // return view('messenger.popup', compact('messages'));
+        return view('messenger.popup', compact('messages'));
     }
 
     public function messageSeen()

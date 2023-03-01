@@ -2308,7 +2308,7 @@ class UsersTableSeeder extends Seeder
 
         ];
 
-        $hrRole->givePermissionTo($companyPermissions);
+        $hrRole->givePermissionTo($hrPermission);
 
 
         $hr = User::create(

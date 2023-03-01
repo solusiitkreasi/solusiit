@@ -52,7 +52,7 @@ class HomeController extends Controller
                 $employees = Employee::get();
                 $meetings  = Meeting::orderBy('meetings.id', 'desc')->take(5)->leftjoin('meeting_employees', 'meetings.id', '=', 'meeting_employees.meeting_id')->where('meeting_employees.employee_id', '=', $emp->id)->orWhere(
                     function ($q){
-                        $q->where('meetings.department_id', '["0"]')->where('meetings.employee_id', '["0"]'); 
+                        $q->where('meetings.department_id', '["0"]')->where('meetings.employee_id', '["0"]');
                     }
                 )->get();
 
@@ -64,7 +64,7 @@ class HomeController extends Controller
                         $q->where('events.department_id', '["0"]')->where('events.employee_id', '["0"]');
                     }
                 )->get();
-                
+
                 $arrEvents = [];
                 foreach($events as $event)
                 {
@@ -133,7 +133,7 @@ class HomeController extends Controller
 
                 $notClockIns    = Employee::where('created_by', '=', \Auth::user()->creatorId())->whereNotIn('id', $notClockIn)->get();
                 $accountBalance = AccountList::where('created_by', '=', \Auth::user()->creatorId())->sum('initial_balance');
-                
+
                 $activeJob   = Job::where('status', 'active')->where('created_by', '=', \Auth::user()->creatorId())->count();
                 $inActiveJOb = Job::where('status', 'in_active')->where('created_by', '=', \Auth::user()->creatorId())->count();
 
@@ -147,13 +147,11 @@ class HomeController extends Controller
         }
         else
         {
-            if(!file_exists(storage_path() . "/installed"))
-            {
-                header('location:install');
-                die;
-            }
-            else
-            {
+            // if(!file_exists(storage_path() . "/installed"))
+            // {
+            //     header('location:install');
+            //     die;
+            // } else {
                 $settings = Utility::settings();
                 if($settings['display_landing_page'] == 'on')
                 {
@@ -165,7 +163,7 @@ class HomeController extends Controller
                     return redirect('login');
                 }
 
-            }
+            // }
         }
     }
 

@@ -1,2 +1,2 @@
 # solusiit
-Team workspace
+Team workspaces

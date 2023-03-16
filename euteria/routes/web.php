@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes([
-    'register'=>false,
+    'register'=>true,
     'verify'=>false,
     'reset'=>false
 ]);
@@ -28,11 +28,11 @@ Route::get('/storage/link',function(){
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::name('admin.')->group(function(){ /* admin prefix name */        
+    Route::name('admin.')->group(function(){ /* admin prefix name */
         Route::prefix('admin')->group(function(){ /* admin prefix url */
             /* DASHBOARD */
             Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-            
+
             Route::namespace('Backend')->group(function(){
                 /* ERROR HANDLER */
                 Route::get('forbidden', 'ErrorController@forbidden')->name('forbidden');
@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function(){
                 /* POST IMAGE */
                 Route::get('post-image/post/{post_id}','PostImageController@post')->name('post-image.post');
                 Route::delete('post-image/{id}','PostImageController@destroy')->name('post-image.destroy');
-                
+
                 // Route::middleware(['role:superadmin|admin'])->group(function(){
                     /* MENU */
                     Route::get('menu/source','MenuController@source')->name('menu.source');
@@ -64,8 +64,8 @@ Route::middleware(['auth'])->group(function(){
 
                 // });
                 /* SETTING */
-                Route::get('setting/get_setting', 'SettingController@get_setting')->name('setting.get_setting');                                
-                Route::resource('setting', 'SettingController');                                
+                Route::get('setting/get_setting', 'SettingController@get_setting')->name('setting.get_setting');
+                Route::resource('setting', 'SettingController');
                 /* POST */
                 Route::get('post/{slug}/source','PostController@source')->name('post.source');
                 Route::get('post/{slug}','PostController@index')->name('post.index');
@@ -74,8 +74,8 @@ Route::middleware(['auth'])->group(function(){
                 Route::get('post/{slug}/{id}','PostController@show')->name('post.show');
                 Route::get('post/{slug}/edit/{id}','PostController@edit')->name('post.edit');
                 Route::put('post/{slug}/update/{id}','PostController@update')->name('post.update');
-                Route::delete('post/{slug}/destroy/{id}','PostController@destroy')->name('post.destroy');                        
-                
+                Route::delete('post/{slug}/destroy/{id}','PostController@destroy')->name('post.destroy');
+
                 /* SLIDER */
                 Route::get('slider/source','SliderController@source')->name('slider.source');
                 Route::resource('slider', 'SliderController');
@@ -98,8 +98,8 @@ Route::middleware(['auth'])->group(function(){
                 Route::resource('feedback', 'FeedbackController');
 
                 Route::get('post-category','PostCategoryController@getCategory');
-                
-                
+
+
             });
         });
     });
@@ -107,7 +107,7 @@ Route::middleware(['auth'])->group(function(){
 
 /* LANGUAGE SWITCH */
 Route::get('lang/{language}', function($lang){
-    
+
     $previous_url = url()->previous();
 
     if(!in_array($lang, config('translatable.locales')))
@@ -116,7 +116,7 @@ Route::get('lang/{language}', function($lang){
     }
     request()->session()->put('locale', $lang);
     return redirect($previous_url);
-    
+
 })->name('lang.switch');
 
 Route::namespace('Frontend')->group(function(){
@@ -125,10 +125,10 @@ Route::namespace('Frontend')->group(function(){
     Route::get('/404', 'IndexController@not_found')->name('index.404');
     Route::get('/tentang-kami', 'IndexController@about')->name('index.about');
     Route::get('/hubungi-kami', 'IndexController@contact')->name('index.contact');
-    
+
     /* FEEDBACK */
     Route::post('/feedback', 'FeedbackController@store')->name('index.feedback.store');
-    
+
     /* UTILITY */
     Route::get('/provinsi', 'UtilityController@provinsi')->name('index.utility.provinsi');
     Route::get('/kota', 'UtilityController@kota')->name('index.utility.kota');

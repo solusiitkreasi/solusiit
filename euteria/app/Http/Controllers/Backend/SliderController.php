@@ -19,9 +19,9 @@ class SliderController extends Controller
 
     public function source()
     {
-        $query = Slider::query();        
+        $query = Slider::query();
         $query->orderBy('order','ASC');
-        return DataTables::eloquent($query)        
+        return DataTables::eloquent($query)
         ->editColumn('title', function ($data) {
             return $data->title;
         })
@@ -41,7 +41,7 @@ class SliderController extends Controller
     {
         return view('backend.slider.index');
     }
-    
+
     public function create()
     {
         $data = null;
@@ -50,20 +50,24 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
-        
+
         DB::beginTransaction();
         try {
-            if($request->has('image')){                
+
+            if($request->has('image')){
                 $image = [];
                 foreach($request->image as $key=>$row){
                     if($row)
                     {
-                        $image[] = $this->upload($row, 'image/slider', Str::uuid().'-'.$key);                        
+                        $image[] = $this->upload($row, 'image/slider', Str::uuid().'-'.$key);
+                        // dd($image);
                     }
                 }
                 $request->merge(['images'=>$image[0]['file_name']]);
-            }      
-            // return $request->all();         
+            }
+
+            dd($request->all());
+            // return $request->all();
             Slider::create($request->all());
             DB::commit();
             return redirect()->route('admin.slider.index')->with('success-message','Slider berhasil disimpan');
@@ -74,7 +78,7 @@ class SliderController extends Controller
     }
 
     public function show($id)
-    {        
+    {
         $data = Slider::findOrFail($id);
         return view('backend.slider.show',compact(['data']));
     }
@@ -90,16 +94,16 @@ class SliderController extends Controller
         DB::beginTransaction();
         try {
             $data = Slider::findOrFail($id);
-            if($request->has('image')){                
+            if($request->has('image')){
                 $image = [];
                 foreach($request->image as $key=>$row){
                     if($row)
                     {
-                        $image[] = $this->upload($row, 'image/slider', Str::uuid().'-'.$key);                        
+                        $image[] = $this->upload($row, 'image/slider', Str::uuid().'-'.$key);
                     }
                 }
                 $request->merge(['images'=>$image[0]['file_name']]);
-            }   
+            }
             $data->update($request->all());
             DB::commit();
             return redirect()->route('admin.slider.index')->with('success-message','Slider berhasil dirubah');
@@ -122,13 +126,13 @@ class SliderController extends Controller
 
     public function order($type,$id)
     {
-        $data = Slider::findOrFail($id);        
+        $data = Slider::findOrFail($id);
         if($type == 'up' || $type = 'down')
         {
             if($type == 'up')
             {
                 $new_oder = $data->order-1;
-                
+
                 $before_data = Slider::where('order',$new_oder)->first();
                 if($before_data)
                 {
@@ -143,7 +147,7 @@ class SliderController extends Controller
                 return $this->success();
             }elseif($type == 'down'){
                 $new_oder = $data->order + 1;
-                
+
                 $before_data = Slider::where('order',$new_oder)->first();
                 if($before_data)
                 {

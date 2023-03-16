@@ -66,7 +66,6 @@ class SliderController extends Controller
                 $request->merge(['images'=>$image[0]['file_name']]);
             }
 
-            dd($request->all());
             // return $request->all();
             Slider::create($request->all());
             DB::commit();

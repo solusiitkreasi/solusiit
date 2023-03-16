@@ -9,18 +9,18 @@ trait Upload
     {
         if (!$file || !$file->isValid()) {
             return;
-        }   
+        }
 
-        
+
         $file_name = $fileName.'.'.$file->getClientOriginalExtension();
         $file_size = $file->getSize();
         $file_extension = $file->getClientOriginalExtension();
         $file_original_name = $file->getClientOriginalName();
         // $fileName = $file->getClientOriginalName().strtotime('now').'.'.$file->getClientOriginalExtension();
-        
+
 
         // if( $size==true ){
-        //     $fileName = Str::uuid();                    
+        //     $fileName = Str::uuid();
         //     // returns Intervention\Image\Image
         //     $resize = Image::make($file)->resize(700,465);
         //     // calculate md5 hash of encoded image
@@ -34,14 +34,14 @@ trait Upload
         //     $resize->destroy();
         //     unlink($path);
         //     return $folder.'/'.$file_name;
-        // }        
+        // }
 
         $file->storeAs(
             'public/'.$folder,$file_name
-        );   
-        
+        );
+
         $data = [
-            'file_name' => 'storage/'.$folder.'/'.$file_name,
+            'file_name' => 'public/'.$folder.'/'.$file_name,
             'file_size' => $file_size,
             'file_extension' => $file_extension,
             'file_original_name' => $file_original_name

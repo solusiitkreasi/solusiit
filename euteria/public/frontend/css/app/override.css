@@ -1,0 +1,162 @@
+/** Overrides **/
+:root {
+  --primary: #01628A;
+  --primary-100: #DDF5FF;
+  --primary-200: #0186BD;
+  --primary-300: #0D8FC5;
+}
+
+body {
+  font-family: 'Tw Cen MT', 'Roboto', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.125;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/** Typography **/
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+h1, .h1 {
+  font-size: 3rem;
+}
+
+h2, .h2 {
+  font-size: 3rem;
+}
+
+h3, .h3 {
+  font-size: 2.5rem;
+}
+
+h4, .h4 {
+  font-size: 2rem;
+}
+
+h5, .h5 {
+  font-size: 1.5rem;
+}
+
+h6, .h6 {
+  font-size: 1.125rem;
+}
+
+.text-lg {
+  font-size: 1.5rem;
+}
+
+.text-md {
+  font-size: 1.25rem;
+}
+
+.text-sm, .small {
+  font-size: .9rem;
+}
+
+strong, .strong {
+  font-weight: 700;
+}
+
+/** Colors **/
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-primary-100 {
+  background-color: var(--primary-100) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+/** Buttons **/
+.btn {
+  font-size: 1.125rem;
+  line-height: 1.25;
+}
+
+.btn.btn-lg {
+  font-size: 1.125rem;
+  line-height: 1.25;
+}
+
+.btn.btn-primary {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+.btn.btn-primary:not(:disabled):not(.disabled):hover {
+  background-color: var(--primary-200);
+}
+.btn.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: var(--primary);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primary.dropdown-toggle {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.badge-primary {
+  background-color: var(--primary);
+}
+
+/** Wrappers **/
+.container {
+  max-width: 1250px;
+}
+
+.row.half-gutters {
+  margin-left: -.5rem;
+  margin-right: -.5rem;
+}
+
+.row.half-gutters > .col,
+.row.half-gutters > .col-auto {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+/** Forms **/
+.form-control,
+.form-control.select2-selection {
+  height: auto;
+  border-radius: 0;
+  border-color: #eee;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-control.form-control-lg {
+  padding: .75rem 1.5rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/** Images **/
+.img-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  object-fit: contain;
+}
+
+.img-icon.is-lg {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}

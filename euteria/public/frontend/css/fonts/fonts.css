@@ -1,0 +1,11 @@
+/* latin-ext */
+@font-face {
+  font-family: 'Tw Cen MT';
+  src: url("./Tw_Cen_MT/TwCenMT.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: 'Tw Cen MT';
+  font-weight: 700;
+  src: url("./Tw_Cen_MT/TwCenMT-Bold.TTF") format("truetype");
+}

@@ -1,0 +1,1 @@
+<a href="{{$route}}" class="btn btn-primary" {{$attributes}}>tambah</a>

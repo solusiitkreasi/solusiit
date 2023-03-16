@@ -1,0 +1,1 @@
+<script src="{{asset('frontend/js/vendor/modernizr-3.5.0.min.js')}}"></script>
